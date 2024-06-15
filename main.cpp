@@ -251,5 +251,4 @@ TEST(ListTest, IsEmpty) {
     list.removeFromTheEnd();
     EXPECT_TRUE(list.isEmpty());
 }
-
-#include "gtest/gtest.h"
+ 
