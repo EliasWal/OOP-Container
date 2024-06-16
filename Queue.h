@@ -1,4 +1,7 @@
 #pragma once
+
+//Alina Sandu
+
 #include <iostream>
 #include <stdexcept>
 using namespace std;
