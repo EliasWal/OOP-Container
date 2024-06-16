@@ -4,7 +4,7 @@
 #include "ForwardList.h" 
 #include "List.h"
 #include "ListIterator.h"   
-
+#include "Queue.h"
 
 //Popa Maria-Eliza
 
@@ -251,4 +251,74 @@ TEST(ListTest, IsEmpty) {
     list.removeFromTheEnd();
     EXPECT_TRUE(list.isEmpty());
 }
+
+TEST(QueueTest, Constructor) {
+    Queue<int> q;
+    EXPECT_TRUE(q.isEmpty());
+    EXPECT_EQ(q.getSize(), 0);
+}
+TEST(QueueTest, PushPopFirstElementLastElement) {
+    Queue<int> q;
+    q.push(0);
+    q.push(1);
+    q.push(2);
+    EXPECT_EQ(q.getFirstElement(), 0);
+    EXPECT_EQ(q.getLastElement(), 2);
+    EXPECT_EQ(q.getSize(), 3);
+    q.pop();
+    q.pop();
+    EXPECT_EQ(q.getSize(), 1);
+    EXPECT_EQ(q.getLastElement(), 2);
+}
+
+TEST(QueueTest, ClearOperatorIndexare) {
+    Queue<int> q;
+    q.push(0);
+    q.push(1);
+    q.push(2);
+    q.clear();
+    EXPECT_TRUE(q.isEmpty());
+    EXPECT_EQ(q.getSize(), 0);
+    q.push(100);
+    EXPECT_EQ(q[0], 100);
+}
+
+TEST(QueueTest, Swap) {
+    Queue<int> q1;
+    q1.push(0);
+    q1.push(1);
+
+    Queue<int> q2;
+    q2.push(2);
+    q2.push(3);
+
+    q1.swap(q2);
+
+    EXPECT_EQ(q1.getFirstElement(), 2);
+    EXPECT_EQ(q1.getLastElement(), 3);
+    EXPECT_EQ(q1.getSize(), 2);
+
+    EXPECT_EQ(q2.getFirstElement(), 0);
+    EXPECT_EQ(q2.getLastElement(), 1);
+    EXPECT_EQ(q2.getSize(), 2);
+}
+
+TEST(QueueTest, ComparisonOperators) {
+    Queue<int> q1;
+    q1.push(0);
+    q1.push(1);
+
+    Queue<int> q2;
+    q2.push(0);
+    q2.push(1);
+
+    Queue<int> q3;
+    q3.push(0);
+    q3.push(2);
+
+    EXPECT_TRUE(q1 == q2);
+    EXPECT_FALSE(q1 == q3);
+    EXPECT_TRUE(q1 != q3);
+}
+
  
